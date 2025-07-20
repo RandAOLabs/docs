@@ -1,4 +1,3 @@
-
 technical:
   label: Technical
   permalink: /technical
@@ -13,3 +12,8 @@ basics:
   label: basics
   permalink: /basics
   description: General info for understanding the big picture
+
+business:
+  label: Business
+  permalink: /business
+  description: Business Centric Information
