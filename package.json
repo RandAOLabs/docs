@@ -16,7 +16,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@arcaogaming/project-links": "^1.0.28",
+    "@arcaogaming/project-links": "^1.0.29",
     "@docusaurus/core": "^3.8.1",
     "@docusaurus/plugin-google-gtag": "^3.8.1",
     "@docusaurus/preset-classic": "^3.8.1",
