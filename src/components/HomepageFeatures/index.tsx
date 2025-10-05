@@ -12,34 +12,34 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'For Developers',
-    emoji: '👨‍💻',
+    title: 'Media Kit',
+    emoji: '📸',
     description: (
       <>
-        Build with RANDAO using our developer tools and libraries.
+        Access branding assets, logos, and press materials for RANDAO.
       </>
     ),
-    link: '/docs/developers/start-here',
+    link: '/media-kit',
   },
   {
-    title: 'For Miners',
-    emoji: '⛏️',
+    title: 'Latest News',
+    emoji: '📰',
     description: (
       <>
-        Learn how to set up and operate a RANDAO provider node.
+        Stay updated with the latest announcements and articles from RANDAO.
       </>
     ),
-    link: '/docs/miners/start-here',
+    link: '/news',
   },
   {
-    title: 'For Investors',
-    emoji: '💎',
+    title: 'Documentation',
+    emoji: '📚',
     description: (
       <>
-        Learn about RANDAO tokenomics and investment opportunities.
+        Explore comprehensive guides and resources for RANDAO.
       </>
     ),
-    link: '/docs/investors/start-here',
+    link: '/docs/start-here',
   },
 ];
 
