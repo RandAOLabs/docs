@@ -32,7 +32,7 @@
     "@docusaurus/module-type-aliases": "^3.9.1",
     "@docusaurus/tsconfig": "^3.9.1",
     "@docusaurus/types": "^3.9.1",
-    "permaweb-deploy": "^1.1.10",
+    "permaweb-deploy": "^2.5.1",
     "typescript": "~5.6.2"
   },
   "browserslist": {
