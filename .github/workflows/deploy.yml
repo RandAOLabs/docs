@@ -1,6 +1,6 @@
-name: Deploy To Arweave & ARNS
+name: Arweave Deploy
 
-# Deploy to arweave
+# Trigger deployment only when pushing to the master branch
 on:
   push:
     branches:
@@ -9,45 +9,41 @@ on:
 jobs:
   Arweave-build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      VITE_GA4_MEASUREMENT_ID: ${{ vars.GA4_MEASUREMENT_ID }}
 
     steps:
-      # Check out the repository code
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
-      # Set up Node.js environment
-      - name: Setup Node.js environment
+      - name: Setup Node.js
         uses: actions/setup-node@v5
         with:
           node-version: "22"
 
-      # Verify that required secrets are present
-      # DEPLOY_KEY: Your Arweave wallet key (required)
-      # DEPLOY_ANT_PROCESS_ID: Your ArNS name's ANT process ID (required)
-      # DEPLOY_UNDERNAME: Optional undername to deploy to
-      - name: Check required secrets
+      # Verify that required secret and variables are present
+      # DEPLOY_KEY: Your Arweave wallet key (required secret)
+      # DEPLOY_ARNS_NAME: Your ArNS name's ANT process ID (required variable)
+      # DEPLOY_UNDERNAME: Optional undername to deploy to (optional variable)
+      - name: Check required configurations
         run: |
           if [ -z "$DEPLOY_KEY" ]; then
             echo "Error: DEPLOY_KEY secret is required but not set"
             exit 1
           fi
-          if [ -z "$DEPLOY_ANT_PROCESS_ID" ]; then
-            echo "Error: DEPLOY_ANT_PROCESS_ID secret is required but not set"
+          if [ -z "$DEPLOY_ARNS_NAME" ]; then
+            echo "Error: DEPLOY_ARNS_NAME variable is required but not set"
             exit 1
           fi
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
-
-      # Delete package-lock so that install will use latest non breaking
-      - name: Delete package-lock.json
-        run: rm package-lock.json
+          DEPLOY_ARNS_NAME: ${{ vars.DEPLOY_ARNS_NAME }}
 
       # Install project dependencies
       - name: Install dependencies
         run: npm install
 
-      # Build project
-      - name: Build project
+      # Build Project
+      - name: Build Project
         run: npm run build
 
       # Default deployment configuration:
@@ -55,12 +51,12 @@ jobs:
       - name: Deploy with undername (default)
         env:
           DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-          DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
-          DEPLOY_UNDERNAME: ${{ secrets.DEPLOY_UNDERNAME }}
+          DEPLOY_ARNS_NAME: ${{ vars.DEPLOY_ARNS_NAME }}
+          DEPLOY_UNDERNAME: ${{ vars.DEPLOY_UNDERNAME }}
         run: |
           if [ -z "$DEPLOY_UNDERNAME" ]; then
-            echo "Error: DEPLOY_UNDERNAME secret is required but not set"
-            echo "Please set the DEPLOY_UNDERNAME secret in your repository settings"
+            echo "Error: DEPLOY_UNDERNAME variable is required but not set"
+            echo "Please set the DEPLOY_UNDERNAME variable in your repository settings"
             echo "If you want to deploy without an undername, use the alternative configuration below"
             exit 1
           fi
@@ -70,10 +66,10 @@ jobs:
       # Alternative deployment configuration (commented out):
       # Use this if you want to deploy directly to the base ArNS without an undername
       # To use this, comment out the above "Deploy with undername" step and uncomment this one
-      #- name: Deploy without undername
-      #  env:
-      #    DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
-      #    DEPLOY_ANT_PROCESS_ID: ${{ secrets.DEPLOY_ANT_PROCESS_ID }}
-      #  run: |
-      #    echo "Deploying without undername to base ArNS"
-      #    npm run deploy
+      # - name: Deploy without undername
+      #   env:
+      #     DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+      #     DEPLOY_ARNS_NAME: ${{ vars.DEPLOY_ARNS_NAME }}
+      #   run: |
+      #     echo "Deploying without undername to base ArNS"
+      #     npm run deploy
