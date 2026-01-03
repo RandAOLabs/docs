@@ -17,3 +17,17 @@ ceey:
   image_url: https://pbs.twimg.com/profile_images/1937177930301411328/-fGd2d3Y_400x400.jpg
   socials:
     x: ceeysya
+
+abpiv:
+  name: Allan B. Pedin IV
+  title: CEO & CO-Founder of RANDAO
+  # url: https://sebastienlorber.com
+  image_url: https://pbs.twimg.com/profile_images/1991180608702173184/XIGBn_XG_400x400.jpg
+  # page:
+  #   # customize the url of the author page at /blog/authors/<permalink>
+  #   permalink: '/all-sebastien-lorber-articles'
+  socials:
+    x: AllanRANDAO
+    linkedin: allan-b-pedin-iv
+    # github: slorber
+    # newsletter: https://thisweekinreact.com
