@@ -1,0 +1,58 @@
+---
+title: Milestone 1 - Laying The Groundwork
+sidebar_position: 1
+---
+
+<img
+  src="/img/docs/research-and-development/research-milestones/milestone-1.gif"
+  alt="Milestone 1 – Research foundations for onchain randomness"
+  style={{ height: '100%', width: 'auto', objectFit: 'contain' }}
+/>
+
+## Related Work & Technical Foundations
+
+Milestone 1 is focused on documenting the **minimum set of primitives, assumptions, and artifacts required to support protocol design** for **onchain randomness** in blockchain systems.
+
+---
+
+### Foundational Diagrams
+
+We define:
+- **System roles and data flow** involved in blockchain randomness  
+- **Commit–reveal timing and verification boundaries** used in proof-of-randomness designs  
+
+These diagrams serve as a shared reference for research and development, helping both engineers and decision-makers reason about how randomness is produced and verified onchain.
+
+---
+
+### Core Cryptographic Primitives
+
+The research documents and evaluates established cryptographic primitives commonly used in **blockchain RNG** and verifiable randomness systems:
+- **RSA**
+- **Modular Exponentiation**
+- **Euler’s Totient Function**
+- **Timelock Puzzles**
+- **Collision-Resistant Hash Functions**
+
+These primitives form the basis for secure designs that answer practical questions such as how random numbers are generated in smart contracts and how **proof of randomness in crypto** can be verified.
+
+Only well-understood, production-grade primitives are considered.
+
+---
+
+### Blockchain Context
+
+This work is grounded in real blockchain constraints, including:
+- **Smart contract execution limits**
+- **Deterministic blockchain environments**
+- **Onchain verification and gas costs**
+
+These factors shape what is possible when building reliable randomness systems on networks like Bitcoin and EVM-based chains.
+
+---
+
+Milestone 1 is complete once these foundations are clearly defined and aligned across the team.
+
+To learn more or support our research efforts, **please contact us at**:
+
+📧 **[contact@randao.net](mailto:contact@randao.net)**
