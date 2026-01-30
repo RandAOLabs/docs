@@ -1,6 +1,6 @@
 {
     "label": "Revenue",
-    "position": 1,
+    "position": 3,
     "link": {
         "type": "generated-index",
         "description": "Documentation on RANDAO's revenue"
