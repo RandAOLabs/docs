@@ -140,6 +140,11 @@ const config: Config = {
       disableSwitch: false, // Enable dark mode switch
       respectPrefersColorScheme: true, // Respect system preferences
     },
+    metadata: [
+      {
+        name: 'keywords', content: 'onchain randomness blockchain, onchain randomness sui, onchain randomness scroll, onchain randomness polygon, onchain randomness arbirtrum, onchain randomness optimism, onchain randomness hemi, onchain randomness base, RNG, RANDAO Ethereum, RANDAO, Onchain randomness, How do I get a random number in chainlink?, What is proof of randomness in crypto?, Blockchain randomness, What is the randomness of bitcoin, What is RNG in Blockchain, What is proof of entropy in crypto, What is proof of randomness'
+      },
+    ],
   } satisfies Preset.ThemeConfig,
   plugins: [
     require.resolve('docusaurus-lunr-search'),
