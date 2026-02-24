@@ -1,0 +1,67 @@
+---
+title: Overview
+sidebar_position: 1
+---
+import { RANDAO } from '@arcaogaming/project-links';
+
+# RANDAO: RNG Protocol Overview
+<video
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="none"
+  style={{ height: 'auto', width: '100%', objectFit: 'contain' }}
+>
+  <source src="/img/docs/protocol/protocol-overview.mp4" type="video/mp4" />
+</video>
+
+### Commit (Commitment Phase)
+
+1. Upon a randomness request, each provider submits a commitment **cᵢ** to the smart contract.
+2. Each commitment consists of:
+   - `TLPᵢ` (a Time Lock Puzzle instance)
+   - `hash(TLPᵢ)`
+3. The hash is recorded on-chain; the actual solution remains hidden.
+4. Once all commitments are posted, the final entropy & outcome is **deterministically locked**.
+---
+
+### Reveal (Reveal Phase)
+
+#### Honest Case
+
+1. Providers voluntarily reveal the solution to their timelock puzzle:
+   - `TLPᵢ(X, N, T)'`
+2. The solution is submitted to the contract.
+3. This accelerates computation of the final output.
+
+#### Malicious Case
+
+1. If a malicious provider (**providerₘ**) withholds their reveal:
+2. Any participant can solve `TLPₘ` using sequential squaring. (This takes time, but is guaranteed to complete.)
+3. As long as **at least one honest provider exists**, the protocol continues.
+
+> **Key Benefit**: Withholding a reveal does not prevent completion; it only delays it.
+
+---
+
+### Verify (Verification Phase)
+
+1. The contract verifies each submitted solution:
+   - Check that `hash(TLPᵢ_solution)` equals the originally committed `hash(TLPᵢ)`.
+2. Invalid reveals are rejected.
+3. Offending providers are flagged and may be penalized via collateral slashing.
+
+> **Key Benefit**: Cryptographic binding guarantees that commitments cannot be altered after submission.
+
+---
+
+### Aggregate (Aggregation Phase)
+
+1. After all valid reveals are verified:
+2. The contract aggregates them using a hash function:
+
+---
+Want to learn more?
+👉 Join the Discord:
+<a href={RANDAO.discord} target="_blank"><img alt="Join Discord" src="https://img.shields.io/badge/Discord-Join-5865F2?style=flat&logo=discord"/></a>
