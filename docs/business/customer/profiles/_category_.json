@@ -1,0 +1,8 @@
+{
+    "label": "Profiles",
+    "position": 1,
+    "link": {
+        "type": "generated-index",
+        "description": "Documentation on RANDAO's Customer Profiles"
+    }
+}
